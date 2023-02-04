@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const res = await fetch('https://jsonplaceholder.typicode.com/users?_limit=10');
+const users = await res.json() as any[];
+
+// const name = null;
+const name = 'Astro';
+---
+
+<Layout title="Greeting">
+    Hello {name ?? 'World'}.
+
+    <ul>
+        {users.map(user => <li>{user.name}</li>)}
+    </ul>
+</Layout>
